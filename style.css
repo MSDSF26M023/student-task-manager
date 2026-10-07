@@ -1,32 +1,203 @@
-* { box-sizing: border-box; }
-body { font-family: "Segoe UI", Arial, sans-serif; background: #f2f5fa; margin: 0; color: #222; }
-.container { max-width: 720px; margin: 30px auto; padding: 0 16px; }
-h1 { text-align: center; color: #2b4a8b; }
+/* ---------- Global Styles ---------- */
+* {
+  box-sizing: border-box;
+}
 
-.task-form, .search-box { display: flex; flex-direction: column; gap: 10px; background: #fff;
-  padding: 16px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,.1); margin-bottom: 20px; }
-input, textarea { padding: 10px; border: 1px solid #ccd; border-radius: 6px; font-size: 1rem; }
-textarea { min-height: 70px; resize: vertical; }
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8f9ff);
+  margin: 0;
+  min-height: 100vh;
+  color: #252525;
+}
 
-button { background: #2b6cf0; color: #fff; border: 0; padding: 10px 16px; border-radius: 6px;
-  cursor: pointer; font-size: .95rem; }
-button:hover { background: #1f55c4; }
-button.danger { background: #d9534f; }
-button.danger:hover { background: #b83b37; }
+/* ---------- Main Container ---------- */
+.container {
+  max-width: 760px;
+  margin: 45px auto;
+  padding: 0 20px;
+}
 
-ul { list-style: none; padding: 0; margin: 0; }
-.task-card { display: flex; justify-content: space-between; align-items: center; gap: 12px;
-  background: #fff; padding: 14px 16px; margin-bottom: 12px; border-radius: 10px;
-  border-left: 5px solid #2b6cf0; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
-.task-card h3 { margin: 0 0 4px; }
-.task-card p { margin: 0; color: #555; }
-.task-card.completed { border-left-color: #3aa655; opacity: .75; }
-.task-card.completed h3 { text-decoration: line-through; }
-.task-actions { display: flex; gap: 8px; }
-.empty { text-align: center; color: #777; padding: 20px; }
+h1 {
+  text-align: center;
+  color: #4f46a5;
+  font-size: 2.2rem;
+  margin-bottom: 28px;
+}
 
+/* ---------- Form & Search Box ---------- */
+.task-form,
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-form:hover,
+.search-box:hover {
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.11);
+}
+
+/* ---------- Input Fields ---------- */
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d6d6e7;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fafaff;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  background: #6366f1;
+  color: #ffffff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+button:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.danger {
+  background: #ef5350;
+}
+
+button.danger:hover {
+  background: #d84343;
+}
+
+/* ---------- Task List ---------- */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---------- Task Cards ---------- */
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  background: #ffffff;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+
+  border-radius: 12px;
+  border-left: 5px solid #6366f1;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.task-card h3 {
+  margin: 0 0 6px;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.task-card p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ---------- Completed Tasks ---------- */
+.task-card.completed {
+  border-left-color: #4caf70;
+  background: #f6fff8;
+  opacity: 0.8;
+}
+
+.task-card.completed h3 {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* ---------- Task Actions ---------- */
+.task-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ---------- Empty Message ---------- */
+.empty {
+  text-align: center;
+  color: #888;
+  padding: 28px;
+  font-style: italic;
+}
+
+/* ---------- Responsive Design ---------- */
 @media (max-width: 600px) {
-  .task-card { flex-direction: column; align-items: flex-start; }
-  .task-actions { width: 100%; }
-  .task-actions button { flex: 1; }
+
+  .container {
+    margin: 25px auto;
+    padding: 0 14px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  .task-form,
+  .search-box {
+    padding: 16px;
+  }
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .task-actions {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .task-actions button {
+    flex: 1;
+  }
 }
