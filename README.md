@@ -1,4 +1,4 @@
-# Student Task Management Application
+# Student Task Management Application Student2
 
 ## Project Description
 Student Task Manager is a simple web application built to demonstrate a real collaborative
